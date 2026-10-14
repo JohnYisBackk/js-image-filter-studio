@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Modern Image Filter Studio built with HTML, CSS and Vanilla JavaScript."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Image Filter Studio</title>
+  </head>
+  <body>
+    <!-- ====================================================== -->
+    <!-- BACKGROUND -->
+    <!-- ====================================================== -->
+
+    <div class="background-grid"></div>
+
+    <div class="background-glow background-glow-one"></div>
+
+    <div class="background-glow background-glow-two"></div>
+
+    <!-- ====================================================== -->
+    <!-- HEADER -->
+    <!-- ====================================================== -->
+
+    <header class="header">
+      <div class="header-wrapper">
+        <a href="#" class="logo">
+          <i class="bi bi-camera-fill"></i>
+
+          <div class="logo-content">
+            <h1>Image Filter Studio <span>PRO</span></h1>
+            <p>Transform your photos with professional filters</p>
+          </div>
+        </a>
+
+        <nav class="nav">
+          <a href="#" class="nav-link active" data-link="home">
+            <i class="bi bi-house-fill"></i>
+            Home
+          </a>
+
+          <a href="#" class="nav-link" data-link="presets">
+            <i class="bi bi-grid"></i>
+            Presets
+          </a>
+
+          <a href="#" class="nav-link" data-link="tools">
+            <i class="bi bi-wrench"></i>
+            Tools
+          </a>
+
+          <a href="#" class="nav-link" data-link="gallery">
+            <i class="bi bi-image"></i>
+            Gallery
+          </a>
+
+          <a href="#" class="nav-link" data-link="about">
+            <i class="bi bi-info-circle"></i>
+            About
+          </a>
+        </nav>
+
+        <button
+          class="theme-button"
+          id="themeBtn"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          <i class="bi bi-sun-fill"></i>
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+
+        <div class="header-divider"></div>
+
+        <div class="avatar-box">
+          <img src="images/avatar-image.png" alt="Avatar image" />
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================== -->
+    <!-- MAIN -->
+    <!-- ====================================================== -->
+
+    <main>
+      <!-- ====================================================== -->
+      <!-- PRESETS SECTION -->
+      <!-- ====================================================== -->
+
+      <section class="presets-section">
+        <div class="presets-header">
+          <div>
+            <p class="section-eyebrow">Quick Filters</p>
+            <h2>Presets</h2>
+          </div>
+
+          <button class="presets-see-all" type="button">
+            See all
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="presets-list">
+          <button class="preset-card active" type="button" data-preset="none">
+            <img src="images/main-image.jpg" alt="No filter preset" />
+            <span>None</span>
+            <i class="bi bi-sliders"></i>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="cinematic">
+            <img src="images/main-image.jpg" alt="Cinematic preset" />
+
+            <span>Cinematic</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="vibrant">
+            <img src="images/main-image.jpg" alt="Vibrant preset" />
+
+            <span>Vibrant</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="vintage">
+            <img src="images/main-image.jpg" alt="Vintage preset" />
+
+            <span>Vintage</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="black-white">
+            <img src="images/main-image.jpg" alt="Black and white preset" />
+
+            <span>Black & White</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="moody">
+            <img src="images/main-image.jpg" alt="Moody preset" />
+
+            <span>Moody</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="sunset">
+            <img src="images/main-image.jpg" alt="Sunset preset" />
+
+            <span>Sunset</span>
+          </button>
+
+          <button class="preset-card" type="button" data-preset="cool-tone">
+            <img src="images/main-image.jpg" alt="Cool tone preset" />
+
+            <span>Cool Tone</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- EDITOR WORKSPACE SECTION -->
+      <!-- ====================================================== -->
+
+      <section class="workspace-section">
+        <div class="workspace-wrapper">
+          <div class="image-preview">
+            <div class="preview-image-wrapper" id="previewImageWrapper">
+              <img
+                class="preview-image"
+                src="images/main-image.jpg"
+                id="previewImage"
+                alt="Image filter preview"
+              />
+
+              <div class="before-label">
+                <span>Before</span>
+              </div> 
+
+              <div class="after-label">
+                <span>After</span>
+              </div>
+
+              <div class="comparison-line" id="comparisonLine">
+                <button
+                  class="comparison-handle"
+                  id="comparisonHandle"
+                  type="button"
+                  aria-label="Compare before and after"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="workspace-actions">
+            <label class="upload-image-button" for="imageUpload">
+              <i class="bi bi-upload"></i>
+              <span>Upload Image</span>
+            </label>
+
+            <input id="imageUpload" type="file" accept="image/*" hidden />
+
+            <button
+              class="workspace-action-button"
+              id="resetFiltersBtn"
+              type="button"
+            >
+              <i class="bi bi-arrow-counterclockwise"></i>
+              <span>Reset Filters</span>
+            </button>
+
+            <button
+              class="workspace-action-button"
+              id="resetImageBtn"
+              type="button"
+            >
+              <i class="bi bi-image"></i>
+              <span>Reset Image</span>
+            </button>
+
+            <button
+              class="workspace-action-button"
+              id="compareBtn"
+              type="button"
+            >
+              <i class="bi bi-layout-split"></i>
+              <span>Compare</span>
+            </button>
+
+            <div class="workspace-actions-divider"></div>
+
+            <button
+              class="download-image-button"
+              id="downloadImageBtn"
+              type="button"
+            >
+              <i class="bi bi-download"></i>
+              <span>Download Image</span>
+
+              <i class="bi bi-chevron-down download-chevron"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- FILTER CONTROLS SECTION -->
+      <!-- ====================================================== -->
+
+      <section class="filter-controls-section">
+        <div class="filter-controls-header">
+          <div class="filter-controls-title">
+            <i class="bi bi-sliders2"></i>
+            <h2>Filter Controls</h2>
+          </div>
+
+          <button
+            class="reset-all-button"
+            id="resetAllFiltersBtn"
+            type="button"
+          >
+            <i class="bi bi-arrow-counterclockwise"></i>
+            <span>Reset All</span>
+          </button>
+        </div>
+
+        <div class="filter-controls-list">
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-brightness-high"></i>
+                <span>Brightness</span>
+              </div>
+
+              <span class="filter-value" id="brightnessValue">100%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="brightnessRange"
+              type="range"
+              min="0"
+              max="200"
+              value="100"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-circle-half"></i>
+                <span>Contrast</span>
+              </div>
+
+              <span class="filter-value" id="contrastValue">100%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="contrastRange"
+              type="range"
+              min="0"
+              max="200"
+              value="100"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-droplet"></i>
+                <span>Saturation</span>
+              </div>
+
+              <span class="filter-value" id="saturationValue">100%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="saturationRange"
+              type="range"
+              min="0"
+              max="200"
+              value="100"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-droplet-half"></i>
+                <span>Blur</span>
+              </div>
+
+              <span class="filter-value" id="blurValue">0px</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="blurRange"
+              type="range"
+              min="0"
+              max="20"
+              value="0"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-circle-half"></i>
+                <span>Grayscale</span>
+              </div>
+
+              <span class="filter-value" id="grayscaleValue">0%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="grayscaleRange"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-palette"></i>
+                <span>Sepia</span>
+              </div>
+
+              <span class="filter-value" id="sepiaValue">0%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="sepiaRange"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-rainbow"></i>
+                <span>Hue Rotate</span>
+              </div>
+
+              <span class="filter-value" id="hueRotateValue">0°</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="hueRotateRange"
+              type="range"
+              min="0"
+              max="360"
+              value="0"
+            />
+          </div>
+
+          <div class="filter-control-item">
+            <div class="filter-control-info">
+              <div class="filter-control-label">
+                <i class="bi bi-circle"></i>
+                <span>Opacity</span>
+              </div>
+
+              <span class="filter-value" id="opacityValue">100%</span>
+            </div>
+
+            <input
+              class="filter-range"
+              id="opacityRange"
+              type="range"
+              min="0"
+              max="100"
+              value="100"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- IMAGE HISTOGRAM SECTION -->
+      <!-- ====================================================== -->
+
+      <section class="histogram-section">
+        <div class="histogram-header">
+          <div class="histogram-title">
+            <i class="bi bi-bar-chart-fill"></i>
+            <h2>Image Histogram</h2>
+          </div>
+
+          <select class="histogram-select">
+            <option value="rgb">RGB</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
+        </div>
+
+        <div class="histogram-chart">
+          <span style="--height: 18%"></span>
+          <span style="--height: 28%"></span>
+          <span style="--height: 42%"></span>
+          <span style="--height: 55%"></span>
+          <span style="--height: 72%"></span>
+          <span style="--height: 64%"></span>
+          <span style="--height: 82%"></span>
+          <span style="--height: 91%"></span>
+          <span style="--height: 70%"></span>
+          <span style="--height: 58%"></span>
+          <span style="--height: 76%"></span>
+          <span style="--height: 88%"></span>
+          <span style="--height: 68%"></span>
+          <span style="--height: 52%"></span>
+          <span style="--height: 38%"></span>
+          <span style="--height: 29%"></span>
+          <span style="--height: 21%"></span>
+          <span style="--height: 14%"></span>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- FILTER PRESETS STATS -->
+      <!-- ====================================================== -->
+
+      <section class="filter-stats-section">
+        <div class="filter-stats-boxes">
+          <div class="filter-stat-box">
+            <div class="filter-stat-icon">
+              <i class="bi bi-sliders2"></i>
+            </div>
+
+            <div class="filter-stat-content">
+              <span id="filterPresetsValue">12</span>
+              <span>Filter Presets</span>
+            </div>
+
+            <p>Professional & creative effects ready to use</p>
+          </div>
+
+          <div class="filter-stat-box">
+            <div class="filter-stat-icon">
+              <i class="bi bi-magic"></i>
+            </div>
+
+            <div class="filter-stat-content">
+              <span id="activeFilterValue">Sepia</span>
+              <span>Active Filter</span>
+            </div>
+
+            <p>Warm vintage tone for a classic look</p>
+          </div>
+
+          <div class="filter-stat-box">
+            <div class="filter-stat-icon">
+              <i class="bi bi-badge-hd-fill"></i>
+            </div>
+
+            <div class="filter-stat-content">
+              <span id="exportQualityValue">High (4K)</span>
+              <span>Export Quality</span>
+            </div>
+
+            <p>Best quality for professional results</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- FILTER SUMMARY SECTION -->
+      <!-- ====================================================== -->
+
+      <section class="filter-summary-section">
+        <div class="filter-summary-header">
+          <div class="filter-summary-title">
+            <i class="bi bi-bar-chart-fill"></i>
+            <h2>Filter Summary</h2>
+          </div>
+
+          <i class="bi bi-arrow-up-right"></i>
+        </div>
+
+        <div class="filter-summary-boxes">
+          <div class="filter-summary-box">
+            <p>Brightness</p>
+            <span id="brightnessSummaryValue" class="green">+12%</span>
+          </div>
+
+          <div class="filter-summary-box">
+            <p>Contrast</p>
+            <span id="contrastSummaryValue" class="green">+28%</span>
+          </div>
+
+          <div class="filter-summary-box">
+            <p>Saturation</p>
+            <span id="saturationSummaryValue" class="pink">+34%</span>
+          </div>
+
+          <div class="filter-summary-box">
+            <p>Sepia</p>
+            <span id="sepiaSummaryValue" class="orange">+18%</span>
+          </div>
+
+          <div class="filter-summary-box">
+            <p>Hue Rotate</p>
+            <span id="hueRotateSummaryValue" class="blue">15°</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
