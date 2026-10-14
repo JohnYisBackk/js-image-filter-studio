@@ -8,13 +8,13 @@ Image Filter Studio PRO allows users to upload images, apply real-time CSS filte
 
 ## 🚀 Live Demo
 
-https://johnyisbackk.github.io/js-image-filter-studio-pro/
+https://johnyisbackk.github.io/js-image-filter-studio/
 
 ---
 
 ## 🖼️ Preview
 
-[![Image Filter Studio PRO Preview](images/preview.png)]()
+[![Image Filter Studio PRO Preview](images/preview.png)](https://johnyisbackk.github.io/js-image-filter-studio/)
 
 ---
 
@@ -216,6 +216,9 @@ js-image-filter-studio-pro/
 │
 ├── images/
 │   └── main-image.jpg
+│   └── avatar-image.png
+│   └── preview.png
+│
 │
 ├── index.html
 ├── style.css
